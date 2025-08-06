@@ -1,29 +1,29 @@
-🧠 AI Resume Builder
+<h1> 🧠 AI Resume Builder </h1>
+
 AI-Resume-Builder is an open-source web application that leverages artificial intelligence and LaTeX templating to help users generate professional, job-ready resumes with ease. This project provides a streamlined, customizable experience for resume creation—perfect for students, professionals, and developers alike.
 
-🔗 Live Demo / Hosted App (Optional)
-📁 View Repository
+<h2> 📁 View Repository </h2>
 
-🏁 Project Background
+<h2> 🏁 Project Background </h2>
 AI Resume Builder was developed as part of the IBM SkillsBuild – AI Agentic Internship Project. The program provides immersive, hands-on training for students and early-career professionals through real-world, mentor-led projects in artificial intelligence, machine learning, and cloud computing. Participants gain globally recognized credentials and develop solutions aligned with industry needs.
 
-✨ Key Features
+<h2> ✨ Key Features </h2>
 🧾 Customizable LaTeX Templates
 Modify template.tex to tailor the resume design to your preferences.
 
-⚙️ Automated PDF Generation
+<h2> ⚙️ Automated PDF Generation </h2>
 Input your resume data and instantly generate a polished PDF.
 
-🌐 Web-Based UI
+<h2> 🌐 Web-Based UI </h2>
 Upload your data or job description through a sleek Flask-powered frontend.
 
-🐍 Python + LaTeX Stack
+<h2> 🐍 Python + LaTeX Stack </h2>
 Built using Python and LaTeX for reliability, flexibility, and extensibility.
 
-🌍 Open Source
+<h2> 🌍 Open Source </h2>
 Freely available for personal, educational, or commercial use.
 
-📁 Project Structure
+<h2> 📁 Project Structure </h2>
 bash
 Copy
 Edit
@@ -42,21 +42,21 @@ Flask (pip install flask)
 
 LaTeX distribution (e.g., TeX Live or MiKTeX)
 
-📦 Installation
+<h2> 📦 Installation </h2>
 bash
 Copy
 Edit
 git clone https://github.com/0xmoh1t/AI-Resume-Builder.git
 cd AI-Resume-Builder
 pip install flask
-▶️ Run the Application
+<h2> ▶️ Run the Application </h2>
 bash
 Copy
 Edit
 python codehack_phantoms.py
 Access the web app at: http://127.0.0.1:5000
 
-💡 How It Works
+<h2>💡 How It Works </h2>
 Open the app in your browser.
 
 Upload your resume or input job description text.
@@ -65,14 +65,14 @@ Click to generate a clean, structured PDF resume.
 
 Download your final result instantly.
 
-👥 Contributors
+<h2> 👥 Contributors </h2>
 👨‍💻 @0xmoh1t (Mohit)
 
 👨‍💻 @HardikIsACoder (Hardik Agrawal)
 
 👨‍💻 @MOULIKGANDHI03 (Moulik Gandhi)
 
-🧪 Tech Stack
+<h2> 🧪 Tech Stack </h2>
 Backend: Python, Flask
 
 Frontend: HTML, CSS
@@ -81,7 +81,7 @@ PDF Generation: LaTeX
 
 Deployment (Optional): GitHub Pages, Heroku, or Render
 
-🤝 Contributing
+<h2> 🤝 Contributing </h2>
 We welcome contributions!
 To contribute:
 
