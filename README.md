@@ -38,7 +38,7 @@ AI-Resume-Builder/
 ├── static/               # Static files (CSS, assets)
 ├── templates/            # HTML templates and LaTeX resume template
 ├── uploads/              # Uploaded resume data and generated PDFs
-├── app.py                # Main Python Flask backend
+├── codehack_phantoms.py  # Main Python Flask backend
 ├── template.tex          # Base LaTeX template
 ├── requirements.txt      # Dependencies (if available)
     </pre>
@@ -67,9 +67,9 @@ cd AI-Resume-Builder</pre>
       <li><b>Set up your <code>.env</code> file</b>
         <pre>GEMINI_API_KEY=your_google_gemini_api_key</pre>
       </li>
-      <li><b>Ensure <code>pdflatex</code> is installed</b> (Required for LaTeX to PDF conversion)</li>
+      <li><b>Ensure <code>pdflatex</code> is installed</b> (Required for LaTeX to PDF conversion, video for refrence: https://youtu.be/Smd9Fnsy00U?si=eulUBvdLFnz-nzvE )</li>
       <li><b>Run the app</b>
-        <pre>python app.py</pre>
+        <pre>python codehack_phantoms.py</pre>
       </li>
       <li><b>Open in browser</b>
         <a href="http://localhost:5000" target="_blank">http://localhost:5000</a>
@@ -111,7 +111,6 @@ cd AI-Resume-Builder</pre>
       <li>Backend: Python, Flask</li>
       <li>Frontend: HTML, CSS</li>
       <li>PDF Generation: LaTeX</li>
-      <li>Deployment (Optional): GitHub Pages, Heroku, or Render</li>
     </ul>
   </div>
 
