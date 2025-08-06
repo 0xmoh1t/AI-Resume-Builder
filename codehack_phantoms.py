@@ -7,6 +7,7 @@ import google.generativeai as genai
 import docx2txt
 import fitz  # PyMuPDF
 import shutil
+import aspose.pdf as ap
 
 app = Flask(__name__)
 CORS(app)
@@ -119,18 +120,36 @@ Now, return the complete, valid, and compilable LaTeX code based on the TEMPLATE
 
     return generated_latex_code
 
+
+from pdflatex import PDFLaTeX
+
 def latex_to_pdf(latex_code, output_filename="resume"):
     tex_file = f"{output_filename}.tex"
-    pdf_file = f"{output_filename}.pdf"
 
-    # Write the LaTeX code to file
+    # Write the LaTeX code to a .tex file
     with open(tex_file, "w") as f:
         f.write(latex_code)
 
-    # Compile using pdflatex (ensure it's installed and in PATH)
-    subprocess.run(["pdflatex", tex_file], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        # Create PDFLaTeX object from the written tex file
+        pdfl = PDFLaTeX.from_texfile(tex_file)
+        
+        # Generate PDF (set keep_pdf_file=True to save the PDF file)
+        pdf_binary, log_output, completed_process = pdfl.create_pdf(
+            keep_pdf_file=True,
+            keep_log_file=True
+        )
 
-    return pdf_file if subprocess.run(["pdflatex", tex_file]).returncode == 0 else "PDF generation failed"
+        # Optionally, write the binary PDF to a file explicitly
+        pdf_file = f"{output_filename}.pdf"
+        with open(pdf_file, "wb") as pdf_out:
+            pdf_out.write(pdf_binary)
+
+        return pdf_file
+    except Exception as e:
+        return f"PDF generation failed: {str(e)}"
+
+
 
 @app.route('/')
 def home():
@@ -155,6 +174,10 @@ def process_resume():
 
     output_pdf = latex_to_pdf(latex_code)
     
+    # Check if PDF generation failed
+    if not os.path.isfile(output_pdf):
+        return f"PDF generation failed: {output_pdf}", 500
+
     # Use the uploaded resume's base name for the download name
     base_name, _ = os.path.splitext(filename)
     download_name = f"{base_name}_updated.pdf"
