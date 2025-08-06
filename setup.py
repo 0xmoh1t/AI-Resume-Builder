@@ -10,7 +10,7 @@ def run(cmd):
 if sys.platform.startswith("linux"):
     print("📦 Installing system dependencies...")
     run("sudo apt-get update")
-    run("sudo apt-get install -y texlive-latex-base")  # Only what's needed for pdflatex
+    run("sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-fonts-extra texlive-font-utils")
 
 # Step 2: Create and activate virtual environment
 venv_dir = "venv"
