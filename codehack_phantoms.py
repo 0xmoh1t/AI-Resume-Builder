@@ -161,8 +161,12 @@ def process_resume():
         return latex_code, 500 # Return an error if the template file is not found
 
     output_pdf = latex_to_pdf(latex_code)
+    
+    # Use the uploaded resume's base name for the download name
+    base_name, _ = os.path.splitext(filename)
+    download_name = f"{base_name}_updated.pdf"
+    return send_file(output_pdf, as_attachment=True, download_name=download_name)
 
-    return send_file(output_pdf, as_attachment=True, download_name="Updated_Resume.pdf")
 
 if __name__ == "__main__":
     app.run(debug=True)
