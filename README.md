@@ -1,81 +1,99 @@
-AI-Resume-Builder
-AI-Resume-Builder is an open-source project hosted on GitHub designed to help users create professional and customizable resumes, leveraging AI and template-based generation. The repository includes source code, templates, and configuration files.
+🧠 AI Resume Builder
+AI-Resume-Builder is an open-source web application that leverages artificial intelligence and LaTeX templating to help users generate professional, job-ready resumes with ease. This project provides a streamlined, customizable experience for resume creation—perfect for students, professionals, and developers alike.
 
-🏆 Project Origin
-AI-Resume-Builder was developed as part of the IBM SkillsBuild – AI Agentic Internship Project. This initiative provides students and early-career professionals with hands-on experience in artificial intelligence and software development through intensive, project-based learning and mentorship from industry experts. The IBM SkillsBuild program focuses on building job-ready skills in AI, machine learning, and cloud technologies, empowering participants to deliver solutions aligned with real-world use cases and receive global credentials upon completion.
+🔗 Live Demo / Hosted App (Optional)
+📁 View Repository
 
-📝 Features
-Customizable LaTeX Templates: Easily modify template.tex to achieve your preferred resume design.
+🏁 Project Background
+AI Resume Builder was developed as part of the IBM SkillsBuild – AI Agentic Internship Project. The program provides immersive, hands-on training for students and early-career professionals through real-world, mentor-led projects in artificial intelligence, machine learning, and cloud computing. Participants gain globally recognized credentials and develop solutions aligned with industry needs.
 
-Automated PDF Generation: Produce polished PDF resumes automatically from structured input.
+✨ Key Features
+🧾 Customizable LaTeX Templates
+Modify template.tex to tailor the resume design to your preferences.
 
-Web-based Uploads: Use the web app to upload resume data and generate outputs.
+⚙️ Automated PDF Generation
+Input your resume data and instantly generate a polished PDF.
 
-Open Source: Built with Python and LaTeX, supporting transparency and extensibility.
+🌐 Web-Based UI
+Upload your data or job description through a sleek Flask-powered frontend.
 
-📁 Folder Structure
-static/: Static files (stylesheets, resources).
+🐍 Python + LaTeX Stack
+Built using Python and LaTeX for reliability, flexibility, and extensibility.
 
-templates/: Web templates and LaTeX template for PDF output.
+🌍 Open Source
+Freely available for personal, educational, or commercial use.
 
-uploads/: Stores uploaded resume data or output PDFs.
-
-codehack_phantoms.py: Main Python logic for the web application.
-
-template.tex: The base LaTeX template for resumes.
-
+📁 Project Structure
+bash
+Copy
+Edit
+AI-Resume-Builder/
+├── static/               # Static files (CSS, assets)
+├── templates/            # HTML templates and LaTeX resume template
+├── uploads/              # Uploaded resume data and generated PDFs
+├── codehack_phantoms.py  # Main Python Flask backend
+├── template.tex          # Base LaTeX template
+├── requirements.txt      # Dependencies (if available)
 🚀 Getting Started
-Prerequisites
+🔧 Prerequisites
 Python 3.x
 
-Flask (install via pip install flask)
+Flask (pip install flask)
 
-LaTeX (for PDF rendering)
+LaTeX distribution (e.g., TeX Live or MiKTeX)
 
-Required Python packages found in requirements.txt (if available)
-
-Installation & Usage
-Clone the Repository
-
+📦 Installation
 bash
+Copy
+Edit
 git clone https://github.com/0xmoh1t/AI-Resume-Builder.git
 cd AI-Resume-Builder
-Install Dependencies
-
-bash
 pip install flask
-Run the Application
-
+▶️ Run the Application
 bash
+Copy
+Edit
 python codehack_phantoms.py
-The web server will start locally (default: http://127.0.0.1:5000)
+Access the web app at: http://127.0.0.1:5000
 
-Using the Generator
+💡 How It Works
+Open the app in your browser.
 
-Open the web app in your browser.
+Upload your resume or input job description text.
 
-Upload or input your resume data as prompted.
+Click to generate a clean, structured PDF resume.
 
-Download your generated PDF resume.
+Download your final result instantly.
 
-👥 Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss your proposed changes.
+👥 Contributors
+👨‍💻 @0xmoh1t (Mohit)
 
-🧑💻 Contributors
-0xmoh1t (Mohit)
+👨‍💻 @HardikIsACoder (Hardik Agrawal)
 
-HardikIsACoder (Hardik Agrawal)
+👨‍💻 @MOULIKGANDHI03 (Moulik Gandhi)
 
-MOULIKGANDHI03 (Moulik Gandhi)
+🧪 Tech Stack
+Backend: Python, Flask
 
-💻 Technologies
-TeX for formatting resumes
+Frontend: HTML, CSS
 
-Python for backend logic
+PDF Generation: LaTeX
 
-CSS and HTML for the web interface
+Deployment (Optional): GitHub Pages, Heroku, or Render
 
-📄 License
-This project is open-source and free for educational or commercial use. See the repository for full licensing information.
+🤝 Contributing
+We welcome contributions!
+To contribute:
 
-Feel free to copy and adapt this README as needed for your project.
+Fork the repo
+
+Create a new branch (git checkout -b feature-name)
+
+Commit your changes
+
+Open a pull request
+
+For major changes, please open an issue first to discuss your idea.
+
+📜 License
+This project is licensed under an open-source license. See the LICENSE file for more information.
