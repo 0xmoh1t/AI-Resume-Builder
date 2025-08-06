@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file, render_template_string
+from flask import Flask, request, jsonify, send_file, render_template, request
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
@@ -62,16 +62,19 @@ You are a LaTeX resume expert.
 
 Your job is to:
 - Read the provided LaTeX template and ONLY fill in the content. Do not alter the template's structure, packages, or existing commands.
-- Use the content from the provided RESUME and optimize it to align with the job description. The goal is to make the resume highly relevant to the job description.
-- **VERY IMPORTANT: The RESUME text below may contain a special section at the end, starting with `--- DETECTED HYPERLINKS ---`. This section contains a list of all URLs extracted from the original resume file.**
-- **You MUST intelligently associate these URLs with the corresponding projects, certifications, or other items mentioned in the main body of the resume.** For example, if you see a project named "Portfolio Website" and a URL like "https://khushal.dev", you should link them.
-- For projects and certifications, create a LaTeX `\href` command. The display text should be "Link". For example: `\begin{{twocolentry}}{{\href{{https://example.com/project-link}}{{Link}}}}`
-- For the header section (email, phone), use the `\hrefWithoutArrow` command as shown in the template.
-- If a section from the template is not relevant or if the required information is not available in the resume, you must omit the entire section and its corresponding title (`\section{{...}}`). **Do not include any N/A placeholders.**
+- Use the content from the provided resume and optimize it to align with the job description. The goal is to make the resume highly relevant to the job description.
+- **Do not include any N/A placeholders.** Instead, if a section from the template is not relevant or if the required information is not available in the resume, you must omit the entire section and its corresponding title (`\section{...}`).
 - Ensure the generated content fits seamlessly into the template and always returns a complete, valid LaTeX document that compiles without errors.
-- **Your output MUST be pure LaTeX code.** Do NOT wrap the code in markdown (e.g., ```latex) or include any extra text or explanations.
-- **Handle special characters properly.** Escape `&`, `%`, `$`, `#`, `_`, '{{', '}}', `~` with a backslash. Use `\&` for a literal ampersand.
-- Use a double hyphen (`--`) for date ranges.
+- **VERY IMPORTANT: Your output MUST be pure LaTeX code.** Do NOT wrap the code in markdown (e.g., ```latex) or include any extra text, explanations, or comments outside of standard LaTeX comments (lines beginning with %).
+- **Handle special characters properly.** Escape the following characters with a backslash: `&`, `%`, `$`, `#`, `_`, '{', '}', `~`. **For a literal ampersand in a section title or list item (e.g., "Programming & Web Technologies"), you MUST use `\&`.**
+- For date ranges and similar uses, replace a single hyphen (`-`) with a double hyphen (`--`) to create an en dash, which is the correct LaTeX symbol for ranges.
+- **Handle all links and URLs using the template's commands.**
+    - For projects, certifications, or any other section with links, use the `\href` command with **"Link"** as the display text, but always extract and preserve the original link from the resume. For example, if the resume contains a project named "AI Resume Builder" with the link `https://github.com/user/resume`, use: `\href{{https://github.com/user/resume}}{{Link}}`.
+    - For the header section, use `\hrefWithoutArrow` for the LinkedIn profile, email, and phone number. 
+    
+    - If the original display text for the link is short and meaningful (e.g., "Portfolio", "GitHub Repo"), it's okay to use that instead of "Link", otherwise default to "Link".
+
+- Ensure the output is a complete LaTeX document, starting with `\documentclass` and ending with `\end{{document}}`.
 
 
 ========
@@ -129,19 +132,9 @@ def latex_to_pdf(latex_code, output_filename="resume"):
 
     return pdf_file if subprocess.run(["pdflatex", tex_file]).returncode == 0 else "PDF generation failed"
 
-@app.route("/", methods=["GET"])
+@app.route('/')
 def home():
-    return render_template_string('''
-    <!DOCTYPE html>
-    <html><body>
-    <h2>AI Resume Builder</h2>
-    <form method="POST" action="/process" enctype="multipart/form-data">
-        <p><b>Upload your Resume (PDF or DOCX):</b><br><input type="file" name="resume" required></p>
-        <p><b>Paste Job Description:</b><br><textarea name="job_description" rows="8" cols="80" required></textarea></p>
-        <button type="submit">Submit</button>
-    </form>
-    </body></html>
-    ''')
+    return render_template('index.html')
 
 @app.route("/process", methods=["POST"])
 def process_resume():
