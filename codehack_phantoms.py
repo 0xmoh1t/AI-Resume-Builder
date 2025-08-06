@@ -7,7 +7,7 @@ import google.generativeai as genai
 import docx2txt
 import fitz  # PyMuPDF
 import shutil
-import aspose.pdf as ap
+from pdflatex import PDFLaTeX
 
 app = Flask(__name__)
 CORS(app)
@@ -121,7 +121,6 @@ Now, return the complete, valid, and compilable LaTeX code based on the TEMPLATE
     return generated_latex_code
 
 
-from pdflatex import PDFLaTeX
 
 def latex_to_pdf(latex_code, output_filename="resume"):
     tex_file = f"{output_filename}.tex"
