@@ -1,4 +1,4 @@
-# 🧐 AI Resume Builder
+# 🧠 AI Resume Builder
 
 AI Resume Builder is an open-source project that uses **AI + LaTeX** to transform your existing resume into a clean, job-optimized, ATS-friendly PDF using a customizable LaTeX template.
 
@@ -11,13 +11,13 @@ This was developed as part of the **IBM SkillsBuild AI Agentic Internship**, wit
 - 📄 Upload your resume (PDF or DOCX)
 - 🧠 Uses Google Gemini API to enhance your resume based on job description
 - 📘 Custom LaTeX template with structured formatting
-- 📄 Automatically compiles to PDF using `pdflatex`
+- 📤 Automatically compiles to PDF using `pdflatex`
 - 🌐 Simple Flask-based web interface
 - 💡 AI-powered rewriting, ATS optimization, hyperlink handling, and section prioritization
 
 ---
 
-## 🏧 Project Structure
+## 🏗️ Project Structure
 
 ```
 AI-Resume-Builder/
@@ -26,43 +26,67 @@ AI-Resume-Builder/
 ├── uploads/              # Uploaded resumes & generated PDFs
 ├── template.tex          # LaTeX resume template
 ├── codehack_phantoms.py  # Flask backend server
-├── setup.py              # All-in-one setup script (venv + dependencies)
+├── setup.py              # Python venv & pip install script
 └── .env                  # Gemini API key configuration
 ```
 
 ---
 
-## 📆 Requirements
+## 📦 Requirements
 
-- Python 3.8+
-- LaTeX (with required packages like `titlesec`, `xcolor`, etc.)
+- Windows 10/11 with WSL enabled
+- Python 3.11+
+- LaTeX (via TeX Live on Ubuntu through WSL)
 - Google Gemini API Key
-- `pdflatex` installed on system (via TeX Live)
 
 ---
 
 ## ⚙️ Installation Guide
 
-### 🐍 Step 1: Clone and Set Up Python + System Environment
+### 🪟 Step 1: Enable WSL and Install Ubuntu on Windows
+
+#### 1. Open PowerShell as Administrator and run:
+
+```powershell
+wsl --install -d Ubuntu
+```
+
+This installs WSL and Ubuntu. Restart your PC if prompted.
+
+#### 2. After restart, launch Ubuntu and create a UNIX username/password.
+
+---
+
+### 🐧 Step 2: Install LaTeX and Dependencies in Ubuntu (WSL)
+
+Open your WSL (Ubuntu) terminal by command:
+
+```bash
+wsl
+```
+
+and run:
+
+```bash
+sudo apt update
+sudo apt install -y texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-fonts-extra texlive-font-utils python3-venv python3-pip
+```
+
+---
+
+### 📁 Step 3: Clone the Repository and Set Up Environment
 
 ```bash
 git clone https://github.com/0xmoh1t/AI-Resume-Builder.git
 cd AI-Resume-Builder
-
-# Automatically creates virtualenv and installs all Python + LaTeX dependencies
 python3 setup.py
 ```
 
-This will:
-- Create a Python virtual environment
-- Install all required Python libraries
-- Install required LaTeX system packages (on Linux)
-
 ---
 
-### 🔐 Step 2: Configure Gemini API Key
+### 🔐 Step 4: Configure Gemini API Key
 
-Create a `.env` file in the root directory with the following content:
+Create a `.env` file in the root directory with this content:
 
 ```
 GEMINI_API_KEY=your_google_api_key_here
@@ -73,11 +97,11 @@ GEMINI_API_KEY=your_google_api_key_here
 ## 🧲 Run the App
 
 ```bash
-source venv/bin/activate  # Or venv\Scripts\activate on Windows
-python codehack_phantoms.py
+source venv/Scripts/Activate
+python3 codehack_phantoms.py
 ```
 
-Now open your browser at: [http://localhost:5000](http://localhost:5000)
+Open your browser at: [http://localhost:5000](http://localhost:5000)
 
 ---
 
@@ -93,22 +117,22 @@ Now open your browser at: [http://localhost:5000](http://localhost:5000)
 
 ## 🧰 Tech Stack
 
-| Component      | Technology                     |
-|----------------|---------------------------------|
-| **Backend**    | Python, Flask                   |
-| **Frontend**   | HTML, CSS (Flask templates)     |
-| **AI**         | Google Gemini API               |
-| **PDF Output** | LaTeX + pdfTeX (pdflatex)       |
+| Component      | Technology                  |
+| -------------- | --------------------------- |
+| **Backend**    | Python, Flask               |
+| **Frontend**   | HTML, CSS (Flask templates) |
+| **AI**         | Google Gemini API           |
+| **PDF Output** | LaTeX + pdfTeX (pdflatex)   |
 
 ---
 
 ## 👨‍💼 Contributors
 
-| Name    | GitHub Handle |
-|---------|----------------|
-| Mohit   | [@0xmoh1t](https://github.com/0xmoh1t) |
-| Hardik  | [@HardikIsACoder](https://github.com/HardikIsACoder) |
-| Moulik  | [@MOULIKGANDHI03](https://github.com/MOULIKGANDHI03) |
+| Name   | GitHub Handle                                        |
+| ------ | ---------------------------------------------------- |
+| Mohit  | [@0xmoh1t](https://github.com/0xmoh1t)               |
+| Hardik | [@HardikIsACoder](https://github.com/HardikIsACoder) |
+| Moulik | [@MOULIKGANDHI03](https://github.com/MOULIKGANDHI03) |
 
 ---
 
