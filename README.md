@@ -77,6 +77,9 @@ sudo apt install -y texlive-latex-base texlive-latex-extra texlive-latex-recomme
 ### 📁 Step 3: Clone the Repository and Set Up Environment
 
 ```bash
+git config --global core.filemode false
+```
+```bash
 git clone https://github.com/0xmoh1t/AI-Resume-Builder.git
 cd AI-Resume-Builder
 python3 setup.py
@@ -95,9 +98,17 @@ GEMINI_API_KEY=your_google_api_key_here
 ---
 
 ## 🧲 Run the App
+Either this:
 
 ```bash
-source venv/Scripts/Activate
+wsl
+source venv/bin/activate
+python3 codehack_phantoms.py
+```
+or this:
+```bash
+wsl
+venv\\Scripts\\Activate
 python3 codehack_phantoms.py
 ```
 
